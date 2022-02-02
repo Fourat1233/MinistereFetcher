@@ -26,11 +26,11 @@ function App() {
     var data = '';
     var config = {
       method: 'get',
-      url: `http://localhost:8081/api/infraction/${cin}`,
+      url: `http://localhost:8083/api/infraction/${cin}`,
       headers: {
         'Accept': 'application/json',
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        "Access-Control-Allow-Methods": "*"
       },
       data : data
     };
@@ -47,11 +47,11 @@ function App() {
 
     var config2 = {
       method: 'get',
-      url: `http://localhost:8080/api/avis/${cin}`,
+      url: `http://localhost:8083/api/avis/${cin}`,
       headers: {
         'Accept': 'application/json',
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        "Access-Control-Allow-Methods": "*"
       },
       data : data
     };
@@ -92,6 +92,7 @@ function App() {
 
   </div>
 </form>
+Avis de recherche :
 <Table striped bordered hover>
   <thead>
     <tr>
@@ -102,16 +103,16 @@ function App() {
   </thead>
   <tbody>
     
-    { responseData.map((inf) => {
-                return <tr><td>{inf.cin}</td> <td>{inf.violation}</td> <td>{inf.montant}</td></tr>
+    { responseData?.map((inf) => {
+                return <tr><td>{inf.cin}</td><td>{inf.violation}</td><td>{inf.montant}</td></tr>
             })}
 
 
   </tbody>
 </Table>
 
-
-
+<hr></hr>
+Infractions:
 <Table striped bordered hover>
   <thead>
     <tr>
@@ -121,8 +122,8 @@ function App() {
     </tr>
   </thead>
   <tbody>
-  { responseData2.map((inf) => {
-                return <tr><td>{inf.cin}</td> <td>{inf.reason}</td> <td>{inf.date}</td></tr>
+  { responseData2?.map((inf) => {
+                return <tr><td>{inf.cin}</td><td>{inf.reason}</td><td>{inf.date}</td></tr>
             })}
   </tbody>
 </Table>
